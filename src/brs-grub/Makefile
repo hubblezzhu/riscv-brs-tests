@@ -18,7 +18,7 @@ brs-grub:
 
 	@pushd grub
 	@git fetch origin
-	@git checkout -b $(BRS_GRUB_BRANCH) $(BRS_GRUB_TAG)
+	@git checkout -b $(BRS_GRUB_BRANCH) $(BRS_GRUB_TAG) || true
 	@git reset --hard $(BRS_GRUB_COMMIT)
 
 	@echo "Applying patches..."
