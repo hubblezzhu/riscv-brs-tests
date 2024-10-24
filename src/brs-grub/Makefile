@@ -5,6 +5,7 @@ SHELL = /bin/bash
 BRS_GRUB_CROSS_COMPILE = riscv64-linux-gnu-
 BRS_GRUB_TARGET = brs-grub
 BRS_GRUB_REPOURL = https://git.savannah.gnu.org/git/grub.git
+BRS_GRUB_BRANCH = grub-2.12
 BRS_GRUB_TAG = grub-2.12
 BRS_GRUB_COMMIT = 5ca9db22e8ed0dbebb2aec53722972de0680a463
 
@@ -17,7 +18,7 @@ brs-grub:
 
 	@pushd grub
 	@git fetch origin
-	@git checkout $(BRS_GRUB_TAG)
+	@git checkout -b $(BRS_GRUB_BRANCH) $(BRS_GRUB_TAG)
 	@git reset --hard $(BRS_GRUB_COMMIT)
 
 	@echo "Applying patches..."
