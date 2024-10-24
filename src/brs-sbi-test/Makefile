@@ -11,13 +11,15 @@ BRS_SBI_TEST_COMMIT = bbd7e8faa2b31ebb44c54fa6e5d7ee371c56cd11
 .PHONY: brs-sbi-test
 brs-sbi-test:
 	@echo "Building BRS SBI TEST..."
-	@if [ ! -d "qemu" ]; then \
+	@if [ ! -d "sbi-test" ]; then \
 		git clone --progress $(BRS_SBI_TEST_REPOURL) sbi-test; \
 	fi
 
 	@pushd sbi-test
 	@git fetch origin
-	@git checkout -b x-tests $(BRS_SBI_TEST_BRANCH) || true
+	@git checkout -b x-tests || true
+	@git branch --set-upstream-to=origin/$(BRS_SBI_TEST_BRANCH) x-tests
+	@git pull --rebase
 	@git reset --hard $(BRS_SBI_TEST_COMMIT)
 
 	@git submodule update --init --recursive --progress
