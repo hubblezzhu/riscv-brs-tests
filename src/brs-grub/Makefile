@@ -31,6 +31,7 @@ brs-grub:
 	stg import -s ../patches/series
 
 	@echo "Configuring GRUB..."
+	@mkdir -p output
 	@if [ -e bootstrap ]; then \
 		if [ ! -e grub-core/lib/gnulib/stdlib.in.h ]; then \
 			./bootstrap
