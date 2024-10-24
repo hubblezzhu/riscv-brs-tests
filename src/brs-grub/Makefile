@@ -31,6 +31,12 @@ brs-grub:
 	stg import -s ../patches/series
 
 	@echo "Configuring GRUB..."
+	@if [ -e bootstrap ]; then \
+		if [ ! -e grub-core/lib/gnulib/stdlib.in.h ]; then \
+			./bootstrap
+		fi
+	fi
+
 	./autogen.sh
 	./configure --target=riscv64-linux-gnu \
 		--with-platform=efi \
