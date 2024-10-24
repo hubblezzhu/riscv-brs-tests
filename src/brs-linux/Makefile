@@ -10,18 +10,18 @@ BRS_LINUX_COMMIT = ac5e19d018afa8a37761510bd233ca319a763c42
 
 .PHONY: brs-linux
 brs-linux:
-	echo "Building BRS Linux..."
-	if [ ! -d "linux" ]; then \
+	@echo "Building BRS Linux..."
+	@if [ ! -d "linux" ]; then \
 		git clone --progress $(BRS_LINUX_REPOURL) linux; \
 	fi
 
-	pushd linux
-	git fetch origin
-	git checkout $(BRS_LINUX_BRANCH)
-	git reset --hard $(BRS_LINUX_COMMIT)
+	@pushd linux
+	@git fetch origin
+	@git checkout $(BRS_LINUX_BRANCH)
+	@git reset --hard $(BRS_LINUX_COMMIT)
 
-	echo "Applying patches..."
-	if ! command -v stg &> /dev/null; then \
+	@echo "Applying patches..."
+	@if ! command -v stg &> /dev/null; then \
 		echo "stg command not found. Please install stgit to apply patches."; \
 		exit 1; \
 	fi
@@ -29,16 +29,16 @@ brs-linux:
 	# stg init || true
 	# stg import -s ../patches/series
 
-	echo "Compiling Linux kernel..."
-	make ARCH=riscv defconfig
-	make ARCH=riscv CROSS_COMPILE=$(BRS_LINUX_CROSS_COMPILE) -j$(nproc)
+	@echo "Compiling Linux kernel..."
+	@make ARCH=riscv defconfig
+	@make ARCH=riscv CROSS_COMPILE=$(BRS_LINUX_CROSS_COMPILE) -j$(nproc)
 
-	echo "BRS Linux build complete."
-
-	popd
+	@echo "BRS Linux build complete."
+	@popd
 
 .PHONY: clean
 clean:
-	echo "Cleaning Linux build..."
-	echo "Removing Linux directory..."
-	rm -rf linux
+	@echo "Cleaning Linux build..."
+	@echo "Removing Linux directory..."
+	@rm -rf linux
+	@echo "BRS Linux clean complete."
