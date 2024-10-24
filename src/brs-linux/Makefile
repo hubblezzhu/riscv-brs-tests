@@ -3,6 +3,8 @@ SHELL = /bin/bash
 .SHELLFLAGS += -e
 
 
+
+BRS_LINUX_CROSS_COMPILE = ../../riscv-gnu-toolchain/riscv/bin/riscv64-unknown-linux-gnu-
 BRS_LINUX_TARGET = brs-buildroot
 BRS_LINUX_REPOURL = git@github.com:vlsunil/linux.git
 BRS_LINUX_BRANCH = acpi_b2_v2_riscv_aia_v11
@@ -22,7 +24,7 @@ brs-linux:
 
     @echo "Applying patches..."
     @if ! command -v stg &> /dev/null; then \
-        echo "StGit not found. Please install it to apply patches."; \
+        echo "stg command not found. Please install it to apply patches."; \
         exit 1; \
     fi
     @cd linux && \
@@ -32,6 +34,14 @@ brs-linux:
     @echo "Compiling Linux kernel..."
     @cd linux && \
     make ARCH=riscv defconfig && \
-    make ARCH=riscv -j$(nproc)
+    make ARCH=riscv CROSS_COMPILE=$(BRS_LINUX_CROSS_COMPILE) -j$(nproc)
 
     @echo "BRS Linux build complete."
+
+
+
+.PHONY: clean
+clean:
+    @echo "Cleaning Linux build..."
+    @echo "Removing Linux directory..."
+    @rm -rf linux
