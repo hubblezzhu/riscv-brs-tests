@@ -2,7 +2,7 @@
 SHELL = /bin/bash
 .SHELLFLAGS += -e
 
-BRS_QEMU_CROSS_COMPILE = riscv64-linux-gnu-
+# BRS_QEMU_CROSS_COMPILE = riscv64-linux-gnu-
 BRS_QEMU_TARGET = brs-qemu
 BRS_QEMU_REPOURL = git@github.com:vlsunil/qemu.git
 BRS_QEMU_BRANCH = riscv_acpi_b2_v7
@@ -20,7 +20,7 @@ brs-qemu:
 	@git checkout $(BRS_QEMU_BRANCH)
 	@git reset --hard $(BRS_QEMU_COMMIT)
 
-	@git submodule update --init --recursive
+	@git submodule update --init --recursive --progress
 
 	@echo "Configuring QEMU..."
 	./configure  --enable-slirp --enable-debug --target-list=riscv64-softmmu
