@@ -202,6 +202,9 @@ brs_install()
 
     # install image xz file
     cp $BRS_IMAGE_DIR/$BRS_IMAGE_XZ $TARGET_DIR/
+
+    # install scripts
+    cp $SCRIPTS_DIR/start_uefi_sct.sh $TARGET_DIR/
 }
 
 brs_clean()
