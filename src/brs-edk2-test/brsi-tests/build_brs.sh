@@ -3,16 +3,16 @@
 #  Copyright 2006 - 2015 Unified EFI, Inc.<BR>
 #  Copyright (c) 2011 - 2020, ARM Ltd. All rights reserved.<BR>
 #  (C) Copyright 2021 Hewlett Packard Enterprise Development LP<BR>
-#  Copyright (c) 2023 Intel Corporation
+#  Copyright (c) 2024 Intel Corporation
 #
 #  This program and the accompanying materials
 #  are licensed and made available under the terms and conditions of the BSD License
-#  which accompanies this distribution.  The full text of the license may be found at 
+#  which accompanies this distribution.  The full text of the license may be found at
 #  http://opensource.org/licenses/bsd-license.php
-# 
+#
 #  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
 #  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
-# 
+#
 ##
 
 SctpackageDependencyList=(SctPkg BaseTools)
@@ -160,7 +160,7 @@ case `uname` in
 		ARMGCC | armgcc)
 			TARGET_TOOLS=ARMGCC
 		;;
-		
+
 		GCC* | gcc*)
 			set_cross_compile
 			CROSS_COMPILE="$TEMP_CROSS_COMPILE"

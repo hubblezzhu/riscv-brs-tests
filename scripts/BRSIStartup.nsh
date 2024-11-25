@@ -1,5 +1,5 @@
 # Copyright (c) 2021, 2023 ARM Limited and Contributors. All rights reserved.
-# Copyright (c) 2023 Intel Corporation
+# Copyright (c) 2024 Intel Corporation
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -113,4 +113,3 @@ for %i in 0 1 2 3 4 5 6 7 8 9 A B C D E F
 endfor
 
 :Done
-
